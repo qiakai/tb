@@ -1,10 +1,5 @@
 #!/bin/bash
 
-[ -n "$___X_CMD_HUB_TOKEN" ] || {
-    printf "%s\n" "- E|x: Please set the ___X_CMD_HUB_TOKEN environment variable" >&2
-    exit 1
-}
-
 apt-get update
 apt-get install -y curl
 
