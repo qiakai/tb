@@ -5,6 +5,9 @@ on:
       apikey:
         description: 'X-CMD HUB APIKEY'
         required: false
+      dataset:
+        description: 'dataset'
+        required: false
   # schedule:
   #   - cron: '0 5,23 * * *'
 
@@ -14,6 +17,7 @@ jobs:
     env:
       ___X_CMD_GHACTION_X: beta
       ___X_CMD_HUB_TOKEN: ${{ github.event.inputs.apikey }}
+      ___X_CMD_HUB_DATASET: ${{ github.event.inputs.dataset }}
     steps:
       - name: main
         uses: x-cmd/action@main
