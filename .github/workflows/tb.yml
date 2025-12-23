@@ -19,6 +19,11 @@ jobs:
         uses: x-cmd/action@main
         with:
           code: |
+            [ -n "$___X_CMD_HUB_TOKEN" ] || {
+                printf "%s\n" "- E|x: Please set the ___X_CMD_HUB_TOKEN environment variable" >&2
+                exit 1
+            }
+
             x ws harbor
           artifact_name: log-jobs
           artifact_path: ~/jobs
