@@ -1,7 +1,7 @@
 #!/bin/bash
 
 [ -n "$___X_CMD_HUB_TOKEN" ] || {
-    x:error "Please set the ___X_CMD_HUB_TOKEN environment variable"
+    printf "%s\n" "- E|x: Please set the ___X_CMD_HUB_TOKEN environment variable"
     exit 1
 }
 
