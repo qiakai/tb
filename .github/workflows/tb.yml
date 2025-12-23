@@ -12,6 +12,7 @@ jobs:
   release-worker:
     runs-on: ubuntu-latest
     env:
+      # ___X_CMD_GHACTION_X: beta
       CMD: ${{ github.event.inputs.apikey }}
     steps:
       - name: main
