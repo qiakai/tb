@@ -1,0 +1,9 @@
+# shellcheck shell=dash
+
+if ! x hascmd harbor; then
+    x env use python=v3.13.0+25.07.0-2
+    pip install harbor || exit 1
+fi
+
+harbor run -d hello-world -m deepseek/deepseek-chat --agent-import-path agent:Xcmd
+# harbor run -d terminal-bench-sample@2.0 -m deepseek/deepseek-chat --agent-import-path agent:Xcmd --registry-path .../registry.json

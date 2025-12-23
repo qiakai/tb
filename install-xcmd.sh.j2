@@ -1,0 +1,10 @@
+#!/bin/bash
+
+[ -n "$___X_CMD_HUB_TOKEN" ] || exit 1
+
+apt-get update
+apt-get install -y curl
+
+eval "$(curl https://get.x-cmd.com/beta)"
+
+export ___X_CMD_HUB_TOKEN="$___X_CMD_HUB_TOKEN"
