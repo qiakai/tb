@@ -24,6 +24,7 @@ jobs:
                 exit 1
             }
 
+            export ___X_CMD_HUB_TOKEN="$___X_CMD_HUB_TOKEN"
             x ws harbor
           artifact_name: log-jobs
           artifact_path: ~/jobs
