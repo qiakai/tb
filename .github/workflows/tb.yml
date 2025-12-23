@@ -21,4 +21,4 @@ jobs:
           code: |
             x ws harbor
           artifact_name: log-jobs
-          artifact_path: ./jobs
+          artifact_path: ~/jobs

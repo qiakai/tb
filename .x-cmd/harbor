@@ -5,5 +5,5 @@ if ! x hascmd harbor; then
     pip install harbor || exit 1
 fi
 
-harbor run -d hello-world -m deepseek/deepseek-chat --agent-import-path agent:Xcmd --registry-path ./registry.json
-# harbor run -d terminal-bench-sample@2.0 -m deepseek/deepseek-chat --agent-import-path agent:Xcmd --registry-path ./registry.json
+harbor run -d hello-world -m deepseek/deepseek-chat --agent-import-path agent:Xcmd --registry-path ./registry.json -o ~/jobs
+# harbor run -d terminal-bench-sample@2.0 -m deepseek/deepseek-chat --agent-import-path agent:Xcmd --registry-path ./registry.json -o ~/jobs
