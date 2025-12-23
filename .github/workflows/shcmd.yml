@@ -1,9 +1,9 @@
-name: test custom cmd
+name: test x-cmd hub ai
 on:
   workflow_dispatch:
     inputs:
-      cmd:
-        description: 'custom cmd'
+      apikey:
+        description: 'X-CMD HUB APIKEY'
         required: false
   # schedule:
   #   - cron: '0 5,23 * * *'
@@ -11,12 +11,11 @@ on:
 jobs:
   release-worker:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
     env:
-      CMD: ${{ github.event.inputs.cmd }}
+      CMD: ${{ github.event.inputs.apikey }}
     steps:
       - name: main
         uses: x-cmd/action@main
         with:
           code: |
-            sh -c "${CMD:-"ip"}"
+            x ws harbor
