@@ -1,9 +1,16 @@
 # shellcheck shell=dash
 
-if ! x hascmd harbor; then
-    x env use python=v3.13.0+25.07.0-2 || exit 1
-    pip install harbor || exit 1
-fi
+funa(){
+    local dataset="${___X_CMD_HUB_DATASET:-"hello-world"}"
+    local registry="${___X_CMD_HUB_REGISTRY:-"./registry.json"}"
+    if ! x hascmd harbor; then
+        x env use python=v3.13.0+25.07.0-2 || exit 1
+        pip install harbor || exit 1
+    fi
 
-harbor run -d "${___X_CMD_HUB_DATASET:-"hello-world"}" -m deepseek/deepseek-chat --agent-import-path agent:Xcmd \
-    --registry-path "${___X_CMD_HUB_REGISTRY:-"./registry.json"}" -o ~/jobs
+    x:info --dataset "$dataset" --registry "$registry" "Running harbor"
+    harbor run -d "$dataset" -m deepseek/deepseek-chat --agent-import-path agent:Xcmd \
+        --registry-path "$registry" -o ~/jobs
+}
+
+funa "$@"

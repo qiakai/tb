@@ -19,7 +19,7 @@ funa(){
     < "$fp" x jo env '1.*' .name -- '
         [ "$name" != "${name#"${dataset}"}" ] || return
         x gh action workflow run -r qiakai/tb --inputs '\''{ "apikey": "'\''$token'\''", "dataset": "'\''${name}${version}'\''", "registry": "registry.split.json" }'\'' tb.yml
-    ' 
+    '
 }
 
 funa "$@"
