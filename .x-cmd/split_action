@@ -1,0 +1,25 @@
+# shellcheck shell=dash
+
+WSROOT="$( x wsroot )"
+funa(){
+    local dataset="${1:-"hello-world"}"
+    local version=""
+    case "$dataset" in
+        *@*)
+            version="@${dataset#*@}"  
+            dataset="${dataset%%@*}"
+            ;;
+    esac
+
+    local fp="$WSROOT/registry.split.json"
+    [ -f "$fp" ] || return 1
+    local token; token="$(x hub --cfg get token)"
+    [ -n "$token" ] || return 1
+
+    < "$fp" x jo env '1.*' .name -- '
+        [ "$name" != "${name#"${dataset}"}" ] || return
+        x gh action workflow run -r qiakai/tb --inputs '\''{ "apikey": "'\''$token'\''", "dataset": "'\''${name}${version}'\''", "registry": "registry.split.json" }'\'' tb.yml
+    ' 
+}
+
+funa "$@"

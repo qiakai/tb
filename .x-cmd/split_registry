@@ -1,0 +1,5 @@
+# shellcheck shell=dash
+
+WSROOT="$( x wsroot )"
+x cawk -m j/json,j/jiter,j/jcp -f "$WSROOT/.x-cmd/dev/split_registry_task.awk" \
+    < "$WSROOT/registry.json" > "$WSROOT/registry.split.json"

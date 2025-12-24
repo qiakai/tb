@@ -8,6 +8,9 @@ on:
       dataset:
         description: 'dataset'
         required: false
+      registry:
+        description: 'registry'
+        required: false
   # schedule:
   #   - cron: '0 5,23 * * *'
 
@@ -18,6 +21,7 @@ jobs:
       ___X_CMD_GHACTION_X: beta
       ___X_CMD_HUB_TOKEN: ${{ github.event.inputs.apikey }}
       ___X_CMD_HUB_DATASET: ${{ github.event.inputs.dataset }}
+      ___X_CMD_HUB_REGISTRY: ${{ github.event.inputs.registry }}
     steps:
       - name: main
         uses: x-cmd/action@main
@@ -30,5 +34,5 @@ jobs:
 
             export ___X_CMD_HUB_TOKEN="$___X_CMD_HUB_TOKEN"
             x ws harbor
-          artifact_name: log-jobs
+          artifact_name: log-jobs-${{ github.event.inputs.dataset }}
           artifact_path: ~/jobs
